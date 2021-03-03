@@ -16,11 +16,11 @@ public abstract class WebUIBase {
     private String propFileName = "iselenium.properties";
 
     protected String testcaseName = "";
-    protected String curBrowser = "firefox"; //默认浏览器是firefox
+    protected String curBrowser = "chrome"; //默认浏览器是firefox
     protected WebDriver driver;
     protected WebDriver.Navigation navigation;
-    protected String firefoxPath = "";
-    protected String chromePath = "";
+    protected String firefoxPath = "C:\WebDriver\bin\geckodriver.exe";
+    protected String chromePath = "C:\WebDriver\bin\chromedriver.exe";
 
     protected int waitTime = 15;
 
@@ -55,8 +55,8 @@ public abstract class WebUIBase {
             chromeOptions.addArguments("--headless");
             driver = new ChromeDriver(chromeOptions);
         } else {
-            System.setProperty("webdriver.gecko.driver", firefoxPath);
-            driver = new FirefoxDriver();
+            System.setProperty("webdriver.chrome.driver", chromePath);
+            driver = new ChromeDriver();
         }
 
         WebDriver.Timeouts timeout = driver.manage().timeouts();
